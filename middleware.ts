@@ -2,7 +2,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 
 export function middleware(req: NextRequest) {
-  console.log('🔥 MIDDLEWARE TRIGGERED:', req.nextUrl.pathname);
   
   const auth = req.headers.get('authorization');
   const credentials = auth?.split(' ')[1];
