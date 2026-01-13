@@ -3,8 +3,8 @@
 import { useChat } from '@ai-sdk/react';
 import { useState } from 'react';
 import { Weather } from './components/weather';
-import { Jira } from './components/Jira';
-import { Momentus } from './components/Momentus';
+import { Jira } from './components/ai_tools/Jira';
+import { Momentus } from './components/ai_tools/Momentus';
 import LottiePlayer from './components/LottiePlayer';
 
 export default function Page() {
@@ -43,6 +43,7 @@ type MomentusProps = {
 
   return (
     <div className="chat-container flex flex-col h-full max-w-lg mx-auto pt-18">
+
       <div className={`flex justify-center items-center mb-4 transition-opacity duration-1000 ease-in-out ${
         showLottie ? 'opacity-100' : 'opacity-0 h-0'
       }`}>
