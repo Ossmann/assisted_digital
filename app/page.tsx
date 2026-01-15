@@ -219,15 +219,40 @@ type LinkProps = {
           value={input}
           onChange={(e) => setInput(e.target.value)}
           placeholder="What do you want to do today..."
-          className="flex-1 p-2 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-400"
+          className="flex-1 p-2 border border-gray-600 text-sm rounded-md focus:outline-none focus:ring-2 focus:ring-gray-400"
         />
         <button
           type="submit"
-          className="px-4 py-2 bg-gray-500 text-white rounded-md hover:bg-gray-600 transition"
+          className="px-4 py-2 bg-gray-500 text-white text-sm rounded-md hover:bg-gray-600 transition"
         >
           Send
         </button>
       </form>
+
+        {/* Quick Action Boxes - Hidden after first input */}
+        {showLottie && (
+          <div className="quick-actions grid grid-cols-2 gap-3 my-4">
+            <button
+              onClick={() => {
+                sendMessage({ text: 'What is the weather today?' });
+                setShowLottie(false); // Already hides both Lottie + quick actions
+              }}
+              className="bg-gray-100 p-3 rounded-lg transition text-sm font-medium text-center h-12 flex items-center justify-center hover:bg-gray-400"
+            >
+              What is the weather today?
+            </button>
+            <button
+              onClick={() => {
+                sendMessage({ text: 'I want to access the academy.' });
+                setShowLottie(false); // Already hides both
+              }}
+              className="bg-gray-100 p-3 rounded-lg transition text-sm font-medium text-center h-12 flex items-center justify-center hover:bg-gray-400"
+            >
+              I want to access the academy.
+            </button>
+          </div>
+        )}
+
     </div>
   </div>
   );
