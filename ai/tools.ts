@@ -8,7 +8,18 @@ export const weatherTool = createTool({
   }),
   execute: async function ({ location }) {
     await new Promise(resolve => setTimeout(resolve, 2000));
-    return { weather: 'Sunny', temperature: 75, location };
+    return { weather: 'Sunny', highTemp: 36, lowTemp: 24, currentTemperature: 32, location };
+  },
+});
+
+export const moxoTool = createTool({
+  description: 'Pass Link to the academy management tool Moxo. Use when users ask about academy details, courses or school classes.',
+  inputSchema: z.object({
+    link: z.string('https://www.moxo.com'),
+  }),
+    execute: async function ({link }) {
+    await new Promise(resolve => setTimeout(resolve, 2000));
+    return {link: 'https://www.moxo.com', imageLink: '/Moxo.jpeg'};
   },
 });
 
@@ -38,4 +49,5 @@ export const tools = {
   displayWeather: weatherTool,
   displayJira: JiraTool,
   displayMomentus: MomentusTool,
+  displayMoxo: moxoTool
 };

@@ -1,25 +1,29 @@
 'use client';
 import { useState, useEffect } from 'react';
-import { usePathname, useRouter } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
 
 export default function ToggleButton() {
-  const pathname = usePathname();
   const router = useRouter();
-  
-  // isToggled = true when on /gui (UI mode)
-  const [isToggled, setIsToggled] = useState(pathname === '/gui');
+  const pathname = usePathname();
+  const [isToggled, setIsToggled] = useState(false);
 
+  // Set initial state based on current page
   useEffect(() => {
-    setIsToggled(pathname === '/gui');
+    if (pathname === '/gui') {
+      setIsToggled(true);
+    } else if (pathname === '/landing') {
+      setIsToggled(false);
+    }
   }, [pathname]);
 
   const handleToggle = () => {
-    if (isToggled) {
-      // Switch to AI (/)
-      router.push('/');
-    } else {
-      // Switch to UI (/gui)
+    const newState = !isToggled;
+    setIsToggled(newState);
+    
+    if (newState) {
       router.push('/gui');
+    } else {
+      router.push('/');
     }
   };
 

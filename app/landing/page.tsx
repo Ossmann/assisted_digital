@@ -6,6 +6,7 @@ import { Weather } from '../components/ai_tools/weather';
 import { Jira } from '../components/ai_tools/Jira';
 import { Momentus } from '../components/ai_tools/Momentus';
 import LottiePlayer from '../components/LottiePlayer';
+import ToggleButton from '../components/ui/toggleButton';
 
 export default function Page() {
   const [input, setInput] = useState('');
@@ -44,11 +45,13 @@ type MomentusProps = {
   return (
     <div className="chat-container flex flex-col h-full max-w-lg mx-auto pt-18">
 
+      <ToggleButton />    
+
       <div className={`flex justify-center items-center mb-4 transition-opacity duration-1000 ease-in-out ${
         showLottie ? 'opacity-100' : 'opacity-0 h-0'
       }`}>
         <LottiePlayer 
-          className="w-2/3" 
+          className="w-3/5" 
           path="/ai_animation.json" 
         />
       </div>

@@ -30,7 +30,7 @@ export const Weather = ({
         <div className="text-7xl font-black text-white drop-shadow-2xl mb-4">
           {currentTemperature}°
         </div>
-        <div className="text-3xl mb-4">
+        <div className="text-5xl mb-4">
           {getWeatherIcon(currentWeather)}
         </div>
         <p className="text-2xl text-white/90 capitalize tracking-wide mb-6">{currentWeather}</p>

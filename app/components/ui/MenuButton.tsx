@@ -4,18 +4,18 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 
 type MenuButtonProps = {
-  icon: React.ReactNode;
+  iconUrl: string;
+  iconAlt?: string;
   label: string;
   url?: string;
-  size?: number;
   onClick?: () => void;
 };
 
 export default function MenuButton({
-  icon,
+  iconUrl,
+  iconAlt,
   label,
   url,
-  size = 100,
   onClick,
 }: MenuButtonProps) {
   const [isClicked, setIsClicked] = useState(false);
@@ -33,25 +33,22 @@ export default function MenuButton({
   return (
     <button
       onClick={handleClick}
-      style={{ width: size, height: size }}
       className={`
-        relative flex flex-col items-center justify-center cursor-pointer rounded
-        border border-gray-800 bg-white p-2
+        relative flex flex-col items-center justify-center cursor-pointer rounded-lg
+        w-28 h-28 border border-gray-800 bg-white p-2
         transition-colors transition-transform duration-300 ease-in-out
         hover:bg-gray-500/50 hover:scale-105
         ${isClicked ? "scale-95 bg-gray-400/70" : ""}
       `}
     >
-      <div
-        className="flex-grow flex items-center justify-center"
-        style={{ fontSize: size / 2 }}
-      >
-        {icon}
+      <div className="flex-grow flex items-center justify-center">
+        <img
+          src={iconUrl}
+          alt={iconAlt || label}
+          className="w-10 h-10 max-w-none object-contain"
+        />
       </div>
-      <div
-        className="mt-1 font-bold text-center"
-        style={{ fontSize: size / 6 }}
-      >
+      <div className="mt-1 font-bold text-center text-sm">
         {label}
       </div>
     </button>
